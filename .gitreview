@@ -1,5 +1,5 @@
 [gerrit]
-host=review.gerrithub.io
+host=review.rdoproject.org
 port=29418
-project=openstack-packages/python-oslo-i18n
+project=openstack/oslo-i18n-distgit
 defaultbranch=rpm-master
