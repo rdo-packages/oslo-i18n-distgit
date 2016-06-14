@@ -137,16 +137,6 @@ popd
 %if 0%{?with_python3}
 pushd python3
 %{__python3} setup.py install --skip-build --root %{buildroot}
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
-pushd doc
-sphinx-build-3 -b html -d build/doctrees   source build/html
-
-# Fix hidden-file-or-dir warnings
-rm -fr build/html/.buildinfo
-
-# Fix this rpmlint warning
-sed -i "s|\r||g" build/html/_static/jquery.js
-popd
 popd
 %endif
 
