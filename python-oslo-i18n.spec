@@ -15,6 +15,8 @@ Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_na
 
 BuildArch:      noarch
 
+BuildRequires:  git
+
 %description
 The oslo.i18n library contain utilities for working with internationalization
 (i18n) features, especially translation for text strings in an application
