@@ -16,6 +16,24 @@
       "revId": "4e7d6538c60b23d3a020280388cbbacfa2e0f276",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_6a577703",
+        "filename": "python-oslo-i18n.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 127
+      },
+      "writtenOn": "2016-07-07T20:35:59Z",
+      "side": 1,
+      "message": "good point should also probably move it up to the section for the top level description then",
+      "parentUuid": "9a245df4_2a4d7f73",
+      "revId": "4e7d6538c60b23d3a020280388cbbacfa2e0f276",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
