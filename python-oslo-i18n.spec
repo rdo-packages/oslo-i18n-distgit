@@ -33,6 +33,7 @@ BuildRequires:  python-pbr
 BuildRequires:  python-babel
 BuildRequires:  python-six
 BuildRequires:  python-fixtures
+BuildRequires:  git
 
 Requires:       python-setuptools
 Requires:       python-babel
@@ -54,6 +55,7 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-babel
 BuildRequires:  python3-six
 BuildRequires:  python3-fixtures
+BuildRequires:  git
 
 Requires:       python3-setuptools
 Requires:       python3-babel
