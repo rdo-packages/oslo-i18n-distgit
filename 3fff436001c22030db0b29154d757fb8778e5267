@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a245df4_cabae309",
+        "filename": "python-oslo-i18n.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-07-08T10:18:42Z",
+      "side": 1,
+      "message": "Need to see why we get this in DLRN buildroot by default, that\u0027s why DLRN CI job passed where it should caught this.",
+      "revId": "3fff436001c22030db0b29154d757fb8778e5267",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
