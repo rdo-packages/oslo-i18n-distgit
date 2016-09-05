@@ -1,3 +1,5 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 %global pypi_name oslo.i18n
 %global pkg_name oslo-i18n
 
@@ -11,7 +13,7 @@ Release:        XXX
 Summary:        OpenStack i18n library
 License:        ASL 2.0
 URL:            https://github.com/openstack/%{pypi_name}
-Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -25,9 +27,6 @@ or library.
 %package -n python2-oslo-i18n
 Summary:        OpenStack i18n Python 2 library
 %{?python_provide:%python_provide python2-oslo-i18n}
-# python_provide does not exist in CBS Cloud buildroot
-Provides:       python-oslo-i18n = %{version}-%{release}
-Obsoletes:      python-oslo-i18n < 2.5.0-2
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
@@ -71,9 +70,6 @@ or library.
 %package -n python2-oslo-i18n-doc
 Summary:        Documentation for OpenStack i18n library
 %{?python_provide:%python_provide python2-oslo-i18n-doc}
-# python_provide does not exist in CBS Cloud buildroot
-Provides:       python-oslo-i18n-doc = %{version}-%{release}
-Obsoletes:      python-oslo-i18n-doc < 2.5.0-2
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
