@@ -1,10 +1,11 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 %global pypi_name oslo.i18n
+%global pkg_name oslo-i18n
 
 %if 0%{?fedora}
 %global with_python3 1
 %endif
-
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-i18n
 Version:        3.4.0
@@ -12,9 +13,11 @@ Release:        1%{?dist}
 Summary:        OpenStack i18n library
 License:        ASL 2.0
 URL:            https://github.com/openstack/%{pypi_name}
-Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
+
+BuildRequires:  git
 
 %description
 The oslo.i18n library contain utilities for working with internationalization
@@ -24,9 +27,6 @@ or library.
 %package -n python2-oslo-i18n
 Summary:        OpenStack i18n Python 2 library
 %{?python_provide:%python_provide python2-oslo-i18n}
-# python_provide does not exist in CBS Cloud buildroot
-Provides:       python-oslo-i18n = %{version}-%{release}
-Obsoletes:      python-oslo-i18n < 2.5.0-2
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
@@ -70,9 +70,6 @@ or library.
 %package -n python2-oslo-i18n-doc
 Summary:        Documentation for OpenStack i18n library
 %{?python_provide:%python_provide python2-oslo-i18n-doc}
-# python_provide does not exist in CBS Cloud buildroot
-Provides:       python-oslo-i18n-doc = %{version}-%{release}
-Obsoletes:      python-oslo-i18n-doc < 2.5.0-2
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
@@ -93,63 +90,29 @@ Documentation for the oslo.i18n library.
 %endif
 
 %prep
-%setup -qc
-mv %{pypi_name}-%{upstream_version} python2
-
-pushd python2
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 rm -rf *.egg-info
 
 # Let RPM handle the dependencies
 rm -f test-requirements.txt requirements.txt
 
-cp -p LICENSE ChangeLog CONTRIBUTING.rst PKG-INFO README.rst ../
-popd
-
-find python2 -name '*.py' | xargs sed -i 's|^#!python|#!%{__python2}|'
-
-%if 0%{?with_python3}
-cp -a python2 python3
-find python3 -name '*.py' | xargs sed -i 's|^#!python|#!%{__python3}|'
-%endif
-
 %build
-pushd python2
-%{__python2} setup.py build
-popd
+%py2_build
 %if 0%{?with_python3}
-pushd python3
-%{__python3} setup.py build
-popd
+%py3_build
 %endif
 
 %install
-pushd python2
-%{__python2} setup.py install --skip-build --root %{buildroot}
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
-pushd doc
-sphinx-build -b html -d build/doctrees   source build/html
-# Fix hidden-file-or-dir warnings
-rm -fr build/html/.buildinfo
+%py2_install
+sphinx-build -b html doc/source html
+# remove the sphinx-build leftovers
+rm -rf html/.{doctrees,buildinfo}
 
 # Fix this rpmlint warning
-sed -i "s|\r||g" build/html/_static/jquery.js
-popd
-popd
+sed -i "s|\r||g" html/_static/jquery.js
 
 %if 0%{?with_python3}
-pushd python3
-%{__python3} setup.py install --skip-build --root %{buildroot}
-export PYTHONPATH="$( pwd ):$PYTHONPATH"
-pushd doc
-sphinx-build-3 -b html -d build/doctrees   source build/html
-
-# Fix hidden-file-or-dir warnings
-rm -fr build/html/.buildinfo
-
-# Fix this rpmlint warning
-sed -i "s|\r||g" build/html/_static/jquery.js
-popd
-popd
+%py3_install
 %endif
 
 %files -n python2-oslo-i18n
@@ -168,12 +131,12 @@ popd
 
 %files -n python2-oslo-i18n-doc
 %license LICENSE
-%doc python2/doc/build/html
+%doc html
 
 %if 0%{?with_python3}
 %files -n python3-oslo-i18n-doc
 %license LICENSE
-%doc python3/doc/build/html
+%doc html
 %endif
 
 %changelog
