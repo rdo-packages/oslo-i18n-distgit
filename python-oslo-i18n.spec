@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-oslo-i18n
-Version:        3.4.0
+Version:        3.5.0
 Release:        1%{?dist}
 Summary:        OpenStack i18n library
 License:        ASL 2.0
@@ -140,6 +140,9 @@ sed -i "s|\r||g" html/_static/jquery.js
 %endif
 
 %changelog
+* Tue Sep 06 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.5.0-1
+- Update to 3.5.0
+
 * Tue Mar 22 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.4.0-
 - Update to 3.4.0
 
