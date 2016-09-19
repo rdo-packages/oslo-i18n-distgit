@@ -67,27 +67,19 @@ The oslo.i18n library contain utilities for working with internationalization
 or library.
 %endif
 
-%package -n python2-oslo-i18n-doc
+%package -n python-oslo-i18n-doc
 Summary:        Documentation for OpenStack i18n library
-%{?python_provide:%python_provide python2-oslo-i18n-doc}
+
+Provides:  python2-oslo-i18n-doc = %{version}-%{release}
+Provides:  python3-oslo-i18n-doc = %{version}-%{release}
+Obsoletes: python2-oslo-i18n-doc
+Obsoletes: python3-oslo-i18n-doc
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 
-%description -n python2-oslo-i18n-doc
+%description -n python-oslo-i18n-doc
 Documentation for the oslo.i18n library.
-
-%if 0%{?with_python3}
-%package -n python3-oslo-i18n-doc
-Summary:        Documentation for OpenStack i18n library
-%{?python_provide:%python_provide python3-oslo-i18n-doc}
-
-BuildRequires:  python3-sphinx
-BuildRequires:  python3-oslo-sphinx
-
-%description -n python3-oslo-i18n-doc
-Documentation for the oslo.i18n library.
-%endif
 
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
@@ -129,14 +121,8 @@ sed -i "s|\r||g" html/_static/jquery.js
 %{python3_sitelib}/*.egg-info
 %endif
 
-%files -n python2-oslo-i18n-doc
+%files -n python-oslo-i18n-doc
 %license LICENSE
 %doc html
-
-%if 0%{?with_python3}
-%files -n python3-oslo-i18n-doc
-%license LICENSE
-%doc html
-%endif
 
 %changelog
