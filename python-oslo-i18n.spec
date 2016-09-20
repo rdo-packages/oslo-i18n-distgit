@@ -34,11 +34,14 @@ BuildRequires:  python-pbr
 BuildRequires:  python-babel
 BuildRequires:  python-six
 BuildRequires:  python-fixtures
+# Required to compile translation files
+BuildRequires:  python-babel
 
 Requires:       python-setuptools
 Requires:       python-babel
 Requires:       python-six
 Requires:       python-fixtures
+Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-oslo-i18n
 The oslo.i18n library contain utilities for working with internationalization
@@ -60,6 +63,7 @@ Requires:       python3-setuptools
 Requires:       python3-babel
 Requires:       python3-six
 Requires:       python3-fixtures
+Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-oslo-i18n
 The oslo.i18n library contain utilities for working with internationalization
@@ -81,6 +85,12 @@ BuildRequires:  python-oslo-sphinx
 %description -n python-oslo-i18n-doc
 Documentation for the oslo.i18n library.
 
+%package  -n python-%{pkg_name}-lang
+Summary:   Translation files for Oslo i18n library
+
+%description -n python-%{pkg_name}-lang
+Translation files for Oslo i18n library
+
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
 rm -rf *.egg-info
@@ -93,6 +103,8 @@ rm -f test-requirements.txt requirements.txt
 %if 0%{?with_python3}
 %py3_build
 %endif
+# Generate i18n files
+%{__python2} setup.py compile_catalog -d build/lib/oslo_i18n/locale
 
 %install
 %py2_install
@@ -106,6 +118,18 @@ sed -i "s|\r||g" html/_static/jquery.js
 %if 0%{?with_python3}
 %py3_install
 %endif
+
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python2_sitelib}/oslo_i18n/locale/*/LC_*/oslo_i18n*po
+rm -f %{buildroot}%{python2_sitelib}/oslo_i18n/locale/*pot
+mv %{buildroot}%{python2_sitelib}/oslo_i18n/locale %{buildroot}%{_datadir}/locale
+%if 0%{?with_python3}
+rm -rf %{buildroot}%{python3_sitelib}/oslo_i18n/locale
+%endif
+
+# Find language files
+%find_lang oslo_i18n --all-name
 
 %files -n python2-oslo-i18n
 %doc ChangeLog CONTRIBUTING.rst PKG-INFO README.rst
@@ -124,5 +148,7 @@ sed -i "s|\r||g" html/_static/jquery.js
 %files -n python-oslo-i18n-doc
 %license LICENSE
 %doc html
+
+%files -n python-%{pkg_name}-lang -f oslo_i18n.lang
 
 %changelog
