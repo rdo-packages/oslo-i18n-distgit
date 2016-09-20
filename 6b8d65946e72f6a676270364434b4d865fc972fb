@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_bf034572",
+        "filename": "python-oslo-i18n.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2016-09-20T16:59:38Z",
+      "side": 1,
+      "message": "Just realized: if we install python-oslo-i18n-lang as a standalone package, there would be no LICENSE file deployed, right? We should add it.",
+      "revId": "6b8d65946e72f6a676270364434b4d865fc972fb",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
