@@ -8,8 +8,8 @@
 %endif
 
 Name:           python-oslo-i18n
-Version:        XXX
-Release:        XXX
+Version:        3.12.0
+Release:        1%{?dist}
 Summary:        OpenStack i18n library
 License:        ASL 2.0
 URL:            https://github.com/openstack/%{pypi_name}
@@ -153,3 +153,6 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_i18n/locale
 %license LICENSE
 
 %changelog
+* Tue Feb 07 2017 Alfredo Moralejo <amoralej@redhat.com> 3.12.0-1
+- Update to 3.12.0
+
