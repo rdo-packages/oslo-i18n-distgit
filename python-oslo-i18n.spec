@@ -80,7 +80,7 @@ Obsoletes: python2-oslo-i18n-doc <= 3.9.0-1
 Obsoletes: python3-oslo-i18n-doc <= 3.9.0-1
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 
 %description -n python-oslo-i18n-doc
 Documentation for the oslo.i18n library.
