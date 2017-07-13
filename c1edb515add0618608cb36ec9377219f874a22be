@@ -1,0 +1,9 @@
+Code-Review+1: Parag Nemade <panemade@gmail.com>
+Code-Review+2: Alan Pevec <alan.pevec@redhat.com>
+Workflow+1: Alan Pevec <alan.pevec@redhat.com>
+Verified+2: Jenkins CI <admin@rpmfactory.beta.rdoproject.org>
+Submitted-by: Jenkins CI <admin@rpmfactory.beta.rdoproject.org>
+Submitted-at: Thu, 13 Jul 2017 21:47:26 +0000
+Reviewed-on: https://review.rdoproject.org/r/7375
+Project: openstack/oslo-i18n-distgit
+Branch: refs/heads/rpm-master
