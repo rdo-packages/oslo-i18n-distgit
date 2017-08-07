@@ -37,7 +37,6 @@ BuildRequires:  python-fixtures
 # Required to compile translation files
 BuildRequires:  python-babel
 
-Requires:       python-setuptools
 Requires:       python-babel
 Requires:       python-six
 Requires:       python-fixtures
@@ -59,7 +58,6 @@ BuildRequires:  python3-babel
 BuildRequires:  python3-six
 BuildRequires:  python3-fixtures
 
-Requires:       python3-setuptools
 Requires:       python3-babel
 Requires:       python3-six
 Requires:       python3-fixtures
