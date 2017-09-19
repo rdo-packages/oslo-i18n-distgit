@@ -79,6 +79,7 @@ Obsoletes: python3-oslo-i18n-doc <= 3.9.0-1
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-openstackdocstheme
+BuildRequires:  openstack-macros
 
 %description -n python-oslo-i18n-doc
 Documentation for the oslo.i18n library.
@@ -94,7 +95,7 @@ Translation files for Oslo i18n library
 rm -rf *.egg-info
 
 # Let RPM handle the dependencies
-rm -f test-requirements.txt requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
