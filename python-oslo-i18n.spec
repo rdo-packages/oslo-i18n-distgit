@@ -7,6 +7,11 @@
 %global with_python3 1
 %endif
 
+%global common_desc \
+The oslo.i18n library contain utilities for working with internationalization \
+(i18n) features, especially translation for text strings in an application \
+or library.
+
 Name:           python-oslo-i18n
 Version:        XXX
 Release:        XXX
@@ -20,9 +25,7 @@ BuildArch:      noarch
 BuildRequires:  git
 
 %description
-The oslo.i18n library contain utilities for working with internationalization
-(i18n) features, especially translation for text strings in an application
-or library.
+%{common_desc}
 
 %package -n python2-oslo-i18n
 Summary:        OpenStack i18n Python 2 library
@@ -43,9 +46,7 @@ Requires:       python-fixtures
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-oslo-i18n
-The oslo.i18n library contain utilities for working with internationalization
-(i18n) features, especially translation for text strings in an application
-or library.
+%{common_desc}
 
 %if 0%{?with_python3}
 %package -n python3-oslo-i18n
@@ -64,9 +65,7 @@ Requires:       python3-fixtures
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-oslo-i18n
-The oslo.i18n library contain utilities for working with internationalization
-(i18n) features, especially translation for text strings in an application
-or library.
+%{common_desc}
 %endif
 
 %package -n python-oslo-i18n-doc
