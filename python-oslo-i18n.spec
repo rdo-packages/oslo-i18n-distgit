@@ -97,25 +97,26 @@ rm -rf *.egg-info
 %py_req_cleanup
 
 %build
-%py2_build
 %if 0%{?with_python3}
 %py3_build
 %endif
+%py2_build
+
 # Generate i18n files
 %{__python2} setup.py compile_catalog -d build/lib/oslo_i18n/locale
 
 %install
+%if 0%{?with_python3}
+%py3_install
+%endif
 %py2_install
+
 %{__python2} setup.py build_sphinx --build-dir . -b html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
 # Fix this rpmlint warning
 sed -i "s|\r||g" html/_static/jquery.js
-
-%if 0%{?with_python3}
-%py3_install
-%endif
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
