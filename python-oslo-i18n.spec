@@ -8,7 +8,7 @@
 %endif
 
 Name:           python-oslo-i18n
-Version:        3.17.0
+Version:        3.17.1
 Release:        1%{?dist}
 Summary:        OpenStack i18n library
 License:        ASL 2.0
@@ -151,6 +151,9 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_i18n/locale
 %license LICENSE
 
 %changelog
+* Wed Nov 22 2017 RDO <dev@lists.rdoproject.org> 3.17.1-1
+- Update to 3.17.1
+
 * Thu Aug 10 2017 Alfredo Moralejo <amoralej@redhat.com> 3.17.0-1
 - Update to 3.17.0
 
