@@ -32,17 +32,17 @@ Summary:        OpenStack i18n Python 2 library
 %{?python_provide:%python_provide python2-oslo-i18n}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pbr
-BuildRequires:  python-babel
-BuildRequires:  python-six
-BuildRequires:  python-fixtures
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pbr
+BuildRequires:  python2-babel
+BuildRequires:  python2-six
+BuildRequires:  python2-fixtures
 # Required to compile translation files
-BuildRequires:  python-babel
+BuildRequires:  python2-babel
 
-Requires:       python-babel
-Requires:       python-six
-Requires:       python-fixtures
+Requires:       python2-babel
+Requires:       python2-six
+Requires:       python2-fixtures
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-oslo-i18n
