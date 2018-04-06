@@ -42,7 +42,6 @@ BuildRequires:  python2-babel
 
 Requires:       python2-babel
 Requires:       python2-six
-Requires:       python2-fixtures
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-oslo-i18n
@@ -61,7 +60,6 @@ BuildRequires:  python3-fixtures
 
 Requires:       python3-babel
 Requires:       python3-six
-Requires:       python3-fixtures
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-oslo-i18n
