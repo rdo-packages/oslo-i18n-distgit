@@ -7,6 +7,8 @@
 %global with_python3 1
 %endif
 
+%global with_doc 1
+
 %global common_desc \
 The oslo.i18n library contain utilities for working with internationalization \
 (i18n) features, especially translation for text strings in an application \
@@ -68,6 +70,7 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 %{common_desc}
 %endif
 
+%if 0%{?with_doc}
 %package -n python-oslo-i18n-doc
 Summary:        Documentation for OpenStack i18n library
 
@@ -82,6 +85,7 @@ BuildRequires:  openstack-macros
 
 %description -n python-oslo-i18n-doc
 Documentation for the oslo.i18n library.
+%endif
 
 %package  -n python-%{pkg_name}-lang
 Summary:   Translation files for Oslo i18n library
@@ -111,12 +115,14 @@ rm -rf *.egg-info
 %endif
 %py2_install
 
+%if 0%{?with_doc}
 %{__python2} setup.py build_sphinx --build-dir . -b html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
 # Fix this rpmlint warning
 sed -i "s|\r||g" html/_static/jquery.js
+%endif
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
@@ -144,9 +150,11 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_i18n/locale
 %{python3_sitelib}/*.egg-info
 %endif
 
+%if 0%{?with_doc}
 %files -n python-oslo-i18n-doc
 %license LICENSE
 %doc html
+%endif
 
 %files -n python-%{pkg_name}-lang -f oslo_i18n.lang
 %license LICENSE
