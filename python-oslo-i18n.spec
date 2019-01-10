@@ -25,6 +25,7 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 BuildArch:      noarch
 
 BuildRequires:  git
+BuildRequires:  openstack-macros
 
 %description
 %{common_desc}
@@ -81,7 +82,6 @@ Obsoletes: python3-oslo-i18n-doc <= 3.9.0-1
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-openstackdocstheme
-BuildRequires:  openstack-macros
 
 %description -n python-oslo-i18n-doc
 Documentation for the oslo.i18n library.
