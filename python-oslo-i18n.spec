@@ -3,7 +3,7 @@
 %global pypi_name oslo.i18n
 %global pkg_name oslo-i18n
 
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} > 7
 %global with_python3 1
 %endif
 
