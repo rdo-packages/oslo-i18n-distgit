@@ -62,6 +62,7 @@ Summary:        Documentation for OpenStack i18n library
 
 BuildRequires:  python%{pyver}-sphinx
 BuildRequires:  python%{pyver}-openstackdocstheme
+BuildRequires:  python%{pyver}-sphinxcontrib-apidoc
 
 %description -n python-%{pkg_name}-doc
 Documentation for the oslo.i18n library.
