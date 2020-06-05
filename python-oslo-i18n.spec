@@ -74,7 +74,7 @@ rm -rf *.egg-info
 %{py3_build}
 
 # Generate i18n files
-python3 setup.py compile_catalog -d build/lib/oslo_i18n/locale
+python3 setup.py compile_catalog -d build/lib/oslo_i18n/locale --domain oslo_i18n
 
 %install
 %{py3_install}
