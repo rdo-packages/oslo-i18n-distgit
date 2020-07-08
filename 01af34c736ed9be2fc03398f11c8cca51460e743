@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09515d5a_ebc4117b",
+        "filename": "python-oslo-i18n.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2020-07-08T15:26:03Z",
+      "side": 0,
+      "message": "we can also remove it as BR",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "01af34c736ed9be2fc03398f11c8cca51460e743",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5586a44c_eae3b39e",
+        "filename": "python-oslo-i18n.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2020-07-08T15:26:03Z",
+      "side": 0,
+      "message": "ditto",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "01af34c736ed9be2fc03398f11c8cca51460e743",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
