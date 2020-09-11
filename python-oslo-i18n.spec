@@ -38,7 +38,6 @@ BuildRequires:  python3-fixtures
 # Required to compile translation files
 BuildRequires:  python3-babel
 
-Requires:       python3-babel
 Requires:       python3-six
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
