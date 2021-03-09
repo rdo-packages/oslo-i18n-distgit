@@ -50,8 +50,8 @@ BuildRequires:  python3-fixtures
 # Required to compile translation files
 BuildRequires:  python3-babel
 
-Requires:       python3-six
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
+Requires:       python3-pbr >= 2.0.0
 
 %description -n python3-%{pkg_name}
 %{common_desc}
