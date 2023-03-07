@@ -131,3 +131,4 @@ mv %{buildroot}%{python3_sitelib}/oslo_i18n/locale %{buildroot}%{_datadir}/local
 * Tue Mar 07 2023 RDO <dev@lists.rdoproject.org> 6.0.0-1
 - Update to 6.0.0
 
+
