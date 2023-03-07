@@ -12,8 +12,8 @@ The oslo.i18n library contain utilities for working with internationalization \
 or library.
 
 Name:           python-oslo-i18n
-Version:        XXX
-Release:        XXX
+Version:        6.0.0
+Release:        1%{?dist}
 Summary:        OpenStack i18n library
 License:        ASL 2.0
 URL:            https://github.com/openstack/%{pypi_name}
@@ -128,3 +128,6 @@ mv %{buildroot}%{python3_sitelib}/oslo_i18n/locale %{buildroot}%{_datadir}/local
 %license LICENSE
 
 %changelog
+* Tue Mar 07 2023 RDO <dev@lists.rdoproject.org> 6.0.0-1
+- Update to 6.0.0
+
