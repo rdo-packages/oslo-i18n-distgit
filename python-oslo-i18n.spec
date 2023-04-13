@@ -13,7 +13,7 @@ or library.
 
 Name:           python-oslo-i18n
 Version:        6.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack i18n library
 License:        ASL 2.0
 URL:            https://github.com/openstack/%{pypi_name}
@@ -100,7 +100,9 @@ python3 setup.py build_sphinx --build-dir . -b html
 rm -rf html/.{doctrees,buildinfo}
 
 # Fix this rpmlint warning
+if [ -f html/_static/jquery.js ]; then
 sed -i "s|\r||g" html/_static/jquery.js
+fi
 %endif
 
 # Install i18n .mo files (.po and .pot are not required)
@@ -128,6 +130,9 @@ mv %{buildroot}%{python3_sitelib}/oslo_i18n/locale %{buildroot}%{_datadir}/local
 %license LICENSE
 
 %changelog
+* Tue Apr 18 2023 Karolina Kula <kkula@redhat.com> 6.0.0-2
+- Fixed compatibility with sphinx >= 6.0
+
 * Tue Mar 07 2023 RDO <dev@lists.rdoproject.org> 6.0.0-1
 - Update to 6.0.0
 
