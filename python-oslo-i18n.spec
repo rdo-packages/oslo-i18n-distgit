@@ -100,7 +100,9 @@ python3 setup.py build_sphinx --build-dir . -b html
 rm -rf html/.{doctrees,buildinfo}
 
 # Fix this rpmlint warning
+if [ -f html/_static/jquery.js ]; then
 sed -i "s|\r||g" html/_static/jquery.js
+fi
 %endif
 
 # Install i18n .mo files (.po and .pot are not required)
