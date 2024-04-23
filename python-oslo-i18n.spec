@@ -19,7 +19,7 @@ or library.
 
 Name:           python-oslo-i18n
 Version:        6.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack i18n library
 License:        Apache-2.0
 URL:            https://github.com/openstack/%{pypi_name}
@@ -48,6 +48,7 @@ Summary:        OpenStack i18n Python 2 library
 
 BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3-babel
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
@@ -92,9 +93,9 @@ done
 # Automatic BR generation
 %generate_buildrequires
 %if 0%{?with_doc}
-  %pyproject_buildrequires -t -e %{default_toxenv},docs
+  %pyproject_buildrequires -t -e docs
 %else
-  %pyproject_buildrequires -t -e %{default_toxenv}
+  %pyproject_buildrequires
 %endif
 
 %build
@@ -108,14 +109,14 @@ done
 # remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
-# Generate i18n files
-python3 setup.py compile_catalog -d %{buildroot}%{python3_sitelib}/oslo_i18n/locale --domain oslo_i18n
-
 # Fix this rpmlint warning
 if [ -f html/_static/jquery.js ]; then
 sed -i "s|\r||g" html/_static/jquery.js
 fi
 %endif
+
+# Generate i18n files
+python3 setup.py compile_catalog -d %{buildroot}%{python3_sitelib}/oslo_i18n/locale --domain oslo_i18n
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
@@ -142,6 +143,9 @@ mv %{buildroot}%{python3_sitelib}/oslo_i18n/locale %{buildroot}%{_datadir}/local
 %license LICENSE
 
 %changelog
+* Tue Apr 23 2024 Alfredo Moralejo <amoralej@redhat.com> 6.3.0-2
+- Fix the build without doc
+
 * Thu Mar 14 2024 RDO <dev@lists.rdoproject.org> 6.3.0-1
 - Update to 6.3.0
 
