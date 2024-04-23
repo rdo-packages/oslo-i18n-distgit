@@ -1,0 +1,8 @@
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Code-Review+2: Joel Capitao <jcapitao@redhat.com>
+Workflow+1: Joel Capitao <jcapitao@redhat.com>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Tue, 23 Apr 2024 15:24:32 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/oslo-i18n-distgit/+/53009
+Project: openstack/oslo-i18n-distgit
+Branch: refs/heads/rpm-master
