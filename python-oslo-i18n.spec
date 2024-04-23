@@ -48,6 +48,7 @@ Summary:        OpenStack i18n Python 2 library
 
 BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3-babel
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
@@ -92,9 +93,9 @@ done
 # Automatic BR generation
 %generate_buildrequires
 %if 0%{?with_doc}
-  %pyproject_buildrequires -t -e %{default_toxenv},docs
+  %pyproject_buildrequires -t -e docs
 %else
-  %pyproject_buildrequires -t -e %{default_toxenv}
+  %pyproject_buildrequires
 %endif
 
 %build
@@ -108,14 +109,14 @@ done
 # remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
-# Generate i18n files
-python3 setup.py compile_catalog -d %{buildroot}%{python3_sitelib}/oslo_i18n/locale --domain oslo_i18n
-
 # Fix this rpmlint warning
 if [ -f html/_static/jquery.js ]; then
 sed -i "s|\r||g" html/_static/jquery.js
 fi
 %endif
+
+# Generate i18n files
+python3 setup.py compile_catalog -d %{buildroot}%{python3_sitelib}/oslo_i18n/locale --domain oslo_i18n
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
