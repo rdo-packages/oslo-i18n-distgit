@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x815AFEC729392386480E076DCC0DFE2D21C023C9
+%global sources_gpg_sign 0x22284f69d9eccdf3df7819791c711af193ff8e54
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 # we are excluding some BRs from automatic generator
 %global excluded_brs doc8 bandit pre-commit hacking flake8-import-order
@@ -18,7 +18,7 @@ The oslo.i18n library contain utilities for working with internationalization \
 or library.
 
 Name:           python-oslo-i18n
-Version:        6.1.0
+Version:        6.1.1
 Release:        1%{?dist}
 Summary:        OpenStack i18n library
 License:        Apache-2.0
@@ -142,6 +142,9 @@ mv %{buildroot}%{python3_sitelib}/oslo_i18n/locale %{buildroot}%{_datadir}/local
 %license LICENSE
 
 %changelog
+* Wed Feb 26 2025 RDO <dev@lists.rdoproject.org> 6.1.1-1
+- Update to 6.1.1
+
 * Fri Sep 01 2023 RDO <dev@lists.rdoproject.org> 6.1.0-1
 - Update to 6.1.0
 
